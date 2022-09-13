@@ -1,3 +1,24 @@
-.bar {
-    width: 500px;
+.nav {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+.navItems {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+
+.logoItem {
+    width: 25px;
+    height: 25px;
+}
+
+.logoContainer {
+    display: flex;
 }
