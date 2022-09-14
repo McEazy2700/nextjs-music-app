@@ -25,3 +25,17 @@ export const getGenreList = gql`
         }
     }
 `
+
+export const getAlbums = gql`
+    query {
+    allAlbums {
+        edges {
+        node {
+            coverPhoto
+            dateAdded
+            title
+        }
+        }
+    }
+    }
+`
