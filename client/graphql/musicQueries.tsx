@@ -5,11 +5,18 @@ export const getMusicList = gql`
         allSongs {
             edges {
                 node {
-                   songUrl 
+                    songUrl
+                    coverPhoto    
+                    id
+                    artist {
+                        id
+                        name
+                    }
+                    title
                 }
             }
         }
-}
+    }
 `
 
 export const getGenreList = gql`

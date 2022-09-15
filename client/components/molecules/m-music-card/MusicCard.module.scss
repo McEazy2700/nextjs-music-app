@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.textBox {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.image {
+  max-width: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // aspect-ratio: 17 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-tracks: center;
+}
