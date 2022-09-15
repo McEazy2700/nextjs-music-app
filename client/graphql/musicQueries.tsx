@@ -5,8 +5,7 @@ export const getMusicList = gql`
         allSongs {
             edges {
                 node {
-                    music
-                    title
+                   songUrl 
                 }
             }
         }
