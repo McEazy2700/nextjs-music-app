@@ -10,11 +10,11 @@ const MusicCard = () => {
          <Image src={Pods} alt='headphones'/> 
       </div>
       <div className={styles.textBox}>
-      <div className={styles.title}>
-        <h4>Test Song</h4>
-        <h6>The weekend</h6>
-      </div>
-      <h5>3:40</h5>
+        <div className={styles.title}>
+          <h4>Test Song</h4>
+          <h6>The weekend</h6>
+        </div>
+        <h5>3:40</h5>
      </div>
     </div>
   )

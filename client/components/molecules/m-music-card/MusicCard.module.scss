@@ -2,21 +2,31 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  justify-content: space-between;
+  width: clamp(200px, 300px, 400px);
+  gap: clamp(15px, 10px, 5px);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-thin);
 }
 
 .textBox {
   display: flex;
   white-space: nowrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
+  h5 {
+    color: var(--text-grey);
+  }
 }
 
 .image {
-  max-width: 9rem;
+  max-width: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  // aspect-ratio: 17 / 9;
+  // aspect-ratio: 1 / 1;
   border-radius: 10px;
   overflow: hidden;
   object-fit: cover;
@@ -27,4 +37,7 @@
   flex-direction: column;
   justify-content: center;
   align-tracks: center;
+  h6 {
+    color: var(--text-grey);
+  }
 }
