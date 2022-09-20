@@ -1,0 +1,51 @@
+:root {
+  --shade-color: #89909F;
+  --transition: all 0.3s ease;
+  --box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
+  --border-radius: 15px;
+  --text-grey: #555555;
+  /* --box-shadow: -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75); */
+  /* --box-shadow: -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75); */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* { 
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --box-shadow-thin: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    --font-color: black;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --box-shadow-thin: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    --font-color: white;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: #191919;
+  }
+}
