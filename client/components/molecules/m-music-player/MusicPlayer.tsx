@@ -1,11 +1,13 @@
-import React, {useRef, useState} from 'react'
+import React, { useEffect, useRef, useState, useContext, useCallback } from 'react'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import { VscUnmute, VscMute } from 'react-icons/vsc'
+import { WindowContext } from '../../../context/Global'
 import styles from './MusicPlayer.module.css'
+import axios from 'axios'
 
 type MusicProp = {
-    src: string,
-    className?: string,
+  src: string,
+  className?: string,
 }
 
 type AudioType = {
@@ -19,8 +21,8 @@ type AudioType = {
  * @param num is what percentage of 'of'
  * @param of base number (5 is what percentage of 20 -> 25%)
  */
-const getPercent = (num:number , of:number) => {
-  return Math.ceil((num/ of) * 100)
+const getPercent = (num: number, of: number) => {
+  return Math.ceil((num / of) * 100)
 }
 
 /**
@@ -31,11 +33,11 @@ const getPercent = (num:number , of:number) => {
  * @param of the percentage of percent your looking for
  * @returns the value value of 'of' percent of 'percent'
  */
-const getPercentValue = (percent:number, of:number) => {
+const getPercentValue = (percent: number, of: number) => {
   return (percent * of) / 100
 }
 
-const MusicPlayer:React.FC<MusicProp> = ({src, className}) => {
+const MusicPlayer: React.FC<MusicProp> = ({ src, className }) => {
   const audioRef = useRef<HTMLAudioElement>(null)
   const seekRef = useRef<HTMLInputElement>(null)
   const volumeRef = useRef<HTMLInputElement>(null)
@@ -48,19 +50,28 @@ const MusicPlayer:React.FC<MusicProp> = ({src, className}) => {
     length: 0,
   })
 
-    
-  const timeUpdateHandler = ()=>{
+  const timeUpdateHandler = useCallback(() => {
     setAudio({
-      duration: audioRef.current ? parseFloat(((audioRef.current?.duration) / 60).toFixed(2)) : 0,
+      duration: audioRef.current && audioRef.current.duration > 0.00 ? parseFloat(((audioRef.current.duration) / 60).toFixed(2)) : 0,
       currentTime: audioRef.current ? parseFloat(((audioRef.current.currentTime) / 60).toFixed(2)) : 0,
-      length: getPercent(audioRef.current?.currentTime ?? 0, audioRef.current?.duration ?? 0)
+      length: audioRef.current.duration > 0.00 ? getPercent(audioRef.current?.currentTime ?? 0, audioRef.current?.duration ?? 0) : 0
     })
     if (audioRef.current) {
       audioRef.current.currentTime === audioRef.current.duration && setPlaying(false)
     }
-  }
-  // console.table(seekRef.current)
-  const audioPlayHandler = ()=>{
+  }, [audioRef.current])
+
+  const context = useContext(WindowContext)
+  useEffect(() => {
+    axios.get(context.player.url)
+      .then(response => {
+        audioRef.current.play()
+        setPlaying(true)
+      })
+  }, [context.player.url, context.player.playing])
+
+
+  const audioPlayHandler = () => {
     if (!playing) {
       audioRef.current?.play()
       setPlaying(true)
@@ -71,11 +82,11 @@ const MusicPlayer:React.FC<MusicProp> = ({src, className}) => {
     }
   }
 
-    const seekHandler = ()=>{
-      if (audioRef.current && seekRef.current)
+  const seekHandler = () => {
+    if (audioRef.current && seekRef.current)
       audioRef.current.currentTime = getPercentValue(parseInt(seekRef.current.value) ?? 0, audioRef.current.duration ?? 0)
-    }
-  
+  }
+
   const muteHandler = () => {
     if (audioRef.current) {
       if (audioRef.current.muted) {
@@ -86,9 +97,9 @@ const MusicPlayer:React.FC<MusicProp> = ({src, className}) => {
         audioRef.current.muted = true
         setMuted(true)
       }
-      }
     }
-    
+  }
+
   const volumeHandler = () => {
     if (volumeRef.current && audioRef.current) {
       audioRef.current.volume = getPercentValue(1, parseInt(volumeRef.current.value))
@@ -99,22 +110,25 @@ const MusicPlayer:React.FC<MusicProp> = ({src, className}) => {
     <div className={styles.container}>
       <div className={className ? className : styles.player}>
         <button className={styles.playButton} onClick={audioPlayHandler}>
-          {!playing ? <FaPlay className={styles.icon}/> : <FaPause className={styles.icon}/>}
+          {!playing ? <FaPlay className={styles.icon} /> : <FaPause className={styles.icon} />}
         </button>
         <audio onTimeUpdate={timeUpdateHandler} ref={audioRef} src={src}></audio>
         <div className={styles.controls}>
-          <input onChange={seekHandler} ref={seekRef} className={styles.timeline} style={{ backgroundSize: `${audio.length}%`}} type="range" name="slider" max='100' value={audio.length} />
+          <input onChange={seekHandler} ref={seekRef} className={styles.timeline}
+            style={{ backgroundSize: `${audio.length}%` }}
+            type="range" name="slider"
+            max='100' value={audio.length} />
         </div>
         <small className={styles.duration}>{audio.currentTime}/ {audio.duration}</small>
         <div className={styles.soundControls}>
-        <button className={styles.soundButton} onClick={muteHandler}>
-          {!muted ?
-              <VscUnmute className={styles.volumeIcon} />:
+          <button className={styles.soundButton} onClick={muteHandler}>
+            {!muted ?
+              <VscUnmute className={styles.volumeIcon} /> :
               <VscMute className={styles.volumeIcon} />
-          }
+            }
           </button>
           <input className={styles.volumeControl}
-            style={{ backgroundSize: `${voloumePercent}%`}}
+            style={{ backgroundSize: `${voloumePercent}%` }}
             type="range" ref={volumeRef} name="volume" max={100} onChange={volumeHandler} />
         </div>
       </div>

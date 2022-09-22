@@ -6,13 +6,15 @@ export const getMusicList = gql`
             edges {
                 node {
                     url
-                    coverPhoto    
+                    photoUrl    
                     id
-                    artist {
-                        id
-                        name
-                    }
                     title
+                    artist {
+                      name
+                    }
+                    album {
+                      title
+                  }
                 }
             }
         }

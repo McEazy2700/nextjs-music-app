@@ -1,42 +1,35 @@
 .card {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  width: clamp(200px, 300px, 400px);
-  gap: clamp(15px, 10px, 5px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
   padding: 10px;
+  grid-gap: 20px;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow-thin);
+  cursor: pointer;
 }
 
-.textBox {
-  display: flex;
-  white-space: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  h5 {
-    color: var(--text-grey);
-  }
-}
 
 .image {
-  max-width: 6rem;
+  max-width: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  // aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1;
   border-radius: 10px;
   overflow: hidden;
   object-fit: cover;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
 }
 
 .title {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-tracks: center;
+  align-items: flex-start;
   h6 {
     color: var(--text-grey);
   }
