@@ -14,7 +14,7 @@ export type WindowType = {
   player: Player;
   setPlayer: React.Dispatch<React.SetStateAction<Player>>
   setActive: React.Dispatch<React.SetStateAction<string>>
-  active: string;
+  active: string | "home" | "music" | "album" | "artist";
   artist?: Artist;
   setArtist?: React.Dispatch<React.SetStateAction<ArtistType>>
 }

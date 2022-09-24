@@ -1,0 +1,48 @@
+.album {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  
+  &:hover .image{
+    filter: blur(1px);
+  }
+
+  &:hover .title{
+    opacity: 1
+  }
+}
+
+.image {
+  max-width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 100%;
+
+  img {
+    aspect-ratio: 1;
+    width: 100%;
+  }
+}
+
+.title {
+  position: absolute;
+  background-color: var(--transparent);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  opacity: 0;
+  transition: var(--transition);
+
+  h4 {
+    color: white;
+  }
+}

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/client'
 import { getMusicList } from '../../../graphql/musicQueries'
-import { MusicType } from '../../../@types/MusicTypes'
 import MusicCard from '../../molecules/m-music-card/MusicCard'
 import { resolveSongList } from '../../../utils/resolvers'
 import styles from './MusicList.module.scss'

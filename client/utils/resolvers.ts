@@ -19,6 +19,29 @@ type MusicData = {
   }
 }
 
+type AlbumData = {
+  allAlbums: {
+    __typename: string
+    edges: {
+      node: {
+        __typename: string
+        artist: {
+          __typename: string
+          id: string
+          name: string
+        }
+        id: string
+        photoUrl: string
+        title: string
+      }
+    }[]
+  }
+}
+
 export const resolveSongList = (data: MusicData) => {
   return data.allSongs.edges.map(edge => edge.node)
+}
+
+export const resolveAlbumList = (data: AlbumData) => {
+  return data.allAlbums.edges.map(edge => edge.node)
 }
