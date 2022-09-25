@@ -5,7 +5,7 @@ export const getAlbumList = gql`
       allAlbums {
         edges {
           node {
-            id
+            albumId
             title
             artist {
               name
@@ -16,3 +16,22 @@ export const getAlbumList = gql`
         }
       }
     }`
+
+export const filterAlbumById = gql`
+  query AllAlbums($allAlbumsId: Float) {
+    allAlbums(id: $allAlbumsId) {
+      edges {
+        node {
+          id
+          title
+          albumId
+          artist {
+            name
+            id
+          }
+          photoUrl
+        }
+      }
+    }
+  }
+`

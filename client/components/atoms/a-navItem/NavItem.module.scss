@@ -6,15 +6,23 @@
 }
 
 .icon {
-    width: 1.5rem;
+    width: 4.5rem;
     height: 1.5rem;
     cursor: pointer;
+
+    &:hover ~ .hint {
+      z-index: 2;
+      opacity: 1;
+      transform: translateX(0);
+    }
 }
 
 .container::after {
     content: '';
-    display: inline-block;
+    display: flex;
     width: 10px;
+    justify-content: center;
+    align-items: center;
     height: 10px;
     background: var(--font-color);
     border-radius: 100%;
@@ -29,4 +37,19 @@
 .active.container::after {
     opacity: 1;
     transform: translateX(-30px);
+}
+
+.hint {
+  position: absolute;
+  top: -30px;
+  font-size: 12px;
+  opacity: 0;
+  background-color: var(--transparent);
+  border-radius: 5px;
+  padding: 5px;
+  z-index: -10;
+  transform: translateX(-100);
+  color: white;
+  transition: var(--transition);
+  cursor: default;
 }

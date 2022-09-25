@@ -19,7 +19,7 @@ const MusicList = () => {
         {
           resolveSongList(data).map((song: any) => {
             return (
-              <MusicCard title={song.title} url={song.photoUrl} artist={song.artist ? song.artist.name : song.album.title} songUrl={song.url} />)
+              <MusicCard key={song.id} title={song.title} url={song.photoUrl} artist={song.artist ? song.artist.name : song.album.title} songUrl={song.url} />)
           })
         }
       </section>

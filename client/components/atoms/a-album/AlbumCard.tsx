@@ -1,26 +1,27 @@
-import React, { useContext } from 'react'
+import React from 'react'
+import Link from 'next/link'
 import styles from './AlbumCard.module.scss'
-import { WindowContext } from '../../../context/Global'
+import { slugify } from '../../../utils/slugifiers'
 
 type CardType = {
   src: string,
-  title: string
+  title: string,
+  albumId: number,
 }
-const AlbumCard = ({ src, title }: CardType) => {
-  const context = useContext(WindowContext)
+const AlbumCard = ({ src, title, albumId }: CardType) => {
+  const slug = slugify(title, albumId.toString())
 
-  const albumClickHandler = () => {
-    context.setActive("album")
-  }
   return (
-    <div onClick={albumClickHandler} className={styles.album}>
-      <div className={styles.image}>
-        <img src={src} alt='phones' />
+    <Link href={`/albums/${slug}`} >
+      <div className={styles.album}>
+        <div className={styles.image}>
+          <img src={src} alt='phones' />
+        </div>
+        <div className={styles.title}>
+          <h4>{title}</h4>
+        </div>
       </div>
-      <div className={styles.title}>
-        <h4>{title}</h4>
-      </div>
-    </div>
+    </Link>
   )
 }
 

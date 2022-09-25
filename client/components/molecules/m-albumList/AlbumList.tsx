@@ -16,7 +16,10 @@ const AlbumList = () => {
     <section className={styles.list}>
       {
         resolveAlbumList(data).map((album: any) => {
-          return (<AlbumCard src={album.photoUrl} title={album.title} />)
+          return (<AlbumCard
+            key={album.albumId}
+            albumId={album.albumId}
+            src={album.photoUrl} title={album.title} />)
         })
       }
     </section>

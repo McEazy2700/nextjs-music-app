@@ -1,6 +1,7 @@
 :root {
   --shade-color: #89909F;
   --transition: all 0.3s ease;
+  --transition-faster: all 0.2s ease;
   --box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.35);
   --border-radius: 15px;
   --text-grey: #555555;
