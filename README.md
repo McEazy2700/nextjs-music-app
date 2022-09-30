@@ -1,2 +1,2 @@
 # nextjs-music-app
-Front-end client for the Grpahql musig api
+Front-end client for the GrpahQL music api
