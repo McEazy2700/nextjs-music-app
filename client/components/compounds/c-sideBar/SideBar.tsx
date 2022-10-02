@@ -27,8 +27,8 @@ const SideBar = () => {
       </div>
       <div className={styles.navItems}>
         <NavItem path='/' hint='Home' navIcon={HiHome} />
-        <NavItem hint='Songs' navIcon={BsMusicNote} />
-        <NavItem hint='Artist' navIcon={RiUserVoiceFill} />
+        {/* <NavItem hint='Songs' navIcon={BsMusicNote} /> */}
+        {/* <NavItem hint='Artist' navIcon={RiUserVoiceFill} /> */}
         <NavItem path='/albums' hint='Albums' navIcon={CgPlayListSearch} />
       </div>
     </nav>

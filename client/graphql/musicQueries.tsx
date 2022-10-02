@@ -20,6 +20,26 @@ export const getMusicList = gql`
         }
     }
 `
+export const getMusicByAlbumId = gql`
+  query GetMusicByAlbumId ($albumId: ID) {
+    allSongs (album_Id: $albumId) {
+      edges {
+        node {
+            url
+            photoUrl    
+            id
+            title
+            artist {
+              name
+            }
+            album {
+              title
+          }
+        }
+      }
+    }
+  }
+`
 
 export const getGenreList = gql`
     query {

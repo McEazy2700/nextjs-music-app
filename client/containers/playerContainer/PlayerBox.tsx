@@ -7,7 +7,6 @@ import ArtistContainer from '../../components/atoms/a-artist/ArtistContainer'
 
 const PlayerBox = () => {
   const context = useContext(WindowContext)
-  console.log(context.player.url)
   return (
     <div className={styles.container}>
       <ArtistContainer name={context.artist.name} imageUrl={context.artist.image} />

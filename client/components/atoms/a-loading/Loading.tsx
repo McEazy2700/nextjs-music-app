@@ -4,7 +4,9 @@ import styles from './Loading.module.scss'
 
 const Loading = () => {
   return (
-    <AiOutlineLoading className={styles.spinner}/>
+    <div className={styles.loading}>
+      <AiOutlineLoading className={styles.spinner} />
+    </div>
   )
 }
 

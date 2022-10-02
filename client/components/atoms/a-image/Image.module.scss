@@ -1,0 +1,32 @@
+.imageLarge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 20rem;
+
+  @media scree and (min-width: 600px) {
+    aspect-ratio: auto;
+  }
+  img {
+    width: 100%;
+  }
+}
+
+
+.imageRound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  object-fit: cover;
+  max-width: 10rem;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+}

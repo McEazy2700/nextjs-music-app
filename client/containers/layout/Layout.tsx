@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <SideBar />
       <main className={styles.main}>
         <nav className={styles.nav}>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </nav>
         {children}
         {context.player.playing && <PlayerBox />}
