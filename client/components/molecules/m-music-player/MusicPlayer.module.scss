@@ -22,6 +22,10 @@
     border-radius: 10rem;
     background-color: var(--player-color);
     box-shadow: var(--box-shadow-thin);
+
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
 }
 
 .playButton {
@@ -145,7 +149,7 @@
 }
 @media (min-width: 550px) {
     .player{
-        width: 95%;
+        width: 100%;
     }
     @media (min-width: 1000px) {
         .player {

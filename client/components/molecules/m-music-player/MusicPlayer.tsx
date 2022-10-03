@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useContext, useCallback } from 'rea
 import { FaPlay, FaPause } from 'react-icons/fa'
 import { VscUnmute, VscMute } from 'react-icons/vsc'
 import { WindowContext } from '../../../context/Global'
-import styles from './MusicPlayer.module.css'
+import styles from './MusicPlayer.module.scss'
 import axios from 'axios'
 
 type MusicProp = {

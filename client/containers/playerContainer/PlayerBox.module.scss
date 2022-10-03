@@ -7,4 +7,10 @@
     max-height: 7rem;
     align-items: center;
     gap: 1rem;
+
+    @media screen and (max-width: 500px) {
+      grid-template-columns: 1fr;
+      bottom: 45px;
+      gap: 0.5rem;
+    }
 }
