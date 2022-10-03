@@ -15,13 +15,16 @@ export const WindowContextProvider = ({ children }: ProviderProps) => {
     playing: false,
     url: null
   })
+  const [navIsOpen, setNavIsOpen] = useState(false)
   const defaults: WindowType = {
     setActive: setActive,
     active: active,
     setPlayer: setPlayer,
     player: player,
     artist: artist,
-    setArtist: setArtist
+    setArtist: setArtist,
+    navIsOpen: navIsOpen,
+    setNavIsOpen: setNavIsOpen
   }
   return <WindowContext.Provider value={defaults}>
     {children}

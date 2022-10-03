@@ -17,6 +17,8 @@ export type WindowType = {
   active: string | "home" | "music" | "album" | "artist";
   artist?: Artist;
   setArtist?: React.Dispatch<React.SetStateAction<ArtistType>>
+  navIsOpen: boolean;
+  setNavIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export type ProviderProps = {

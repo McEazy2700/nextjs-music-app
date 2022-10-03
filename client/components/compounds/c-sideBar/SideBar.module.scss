@@ -5,6 +5,16 @@
     gap: 3rem;
     // padding: 0 1rem;
     align-items: center;
+
+    @media screen and (max-width: 500px) {
+      transform: translateX(-130%);
+      position: fixed;
+      z-index: 100;
+    }
+}
+
+.nav.navOpen {
+  transform: translateX(0);
 }
 
 .navItems {
