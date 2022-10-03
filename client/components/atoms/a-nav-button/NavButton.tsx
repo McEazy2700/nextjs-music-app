@@ -6,7 +6,7 @@ import { WindowContext } from '../../../context/Global'
 
 const NavButton = ({ onClick, isOpen }) => {
   const context = useContext(WindowContext)
-  console.log(context.navIsOpen)
+  console.log(isOpen)
   return (
     <button onClick={onClick} className={styles.button}>
       {isOpen ? <MdOutlineClose /> : <BiMenuAltLeft />}

@@ -17,8 +17,8 @@ const Layout = ({ children }) => {
       setIsOpen(false)
     } else {
       context.setNavIsOpen(true)
+      setIsOpen(true)
     }
-    setIsOpen(true)
   }
   return (
     <div className={styles.container}>
