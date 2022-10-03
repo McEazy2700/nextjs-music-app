@@ -16,7 +16,7 @@ export type MusicData = {
         }
       }
     }[]
-  }
+  } | null
 }
 
 export type AlbumData = {
@@ -38,17 +38,17 @@ export type AlbumData = {
         title: string
       }
     }[]
-  }
+  } | null
 }
 
 export const resolveSongList = (data: MusicData) => {
-  return data.allSongs.edges.map(edge => edge.node)
+  return data.allSongs.edges.map(edge => edge.node) ?? null
 }
 
 export const resolveAlbumList = (data: AlbumData) => {
-  return data.allAlbums.edges.map(edge => edge.node)
+  return data.allAlbums.edges.map(edge => edge.node) ?? null
 }
 
 export const resolveAlbum = (data: AlbumData) => {
-  return data.allAlbums.edges[0].node
+  return data.allAlbums.edges[0].node ?? null
 }

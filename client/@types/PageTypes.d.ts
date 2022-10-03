@@ -1,7 +1,9 @@
-import { MusicData } from "../utils/resolvers";
+import { MusicData, AlbumData } from "../utils/resolvers";
 
 
 export type HomePageType = {
   musicData: MusicData,
-  musicIsLoading: boolean
+  musicIsLoading: boolean,
+  albumData: AlbumData,
+  albumIsLoading: boolean
 }

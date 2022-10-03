@@ -1,26 +1,22 @@
 import React from 'react'
-import { useQuery } from "@apollo/client";
-import { getAlbumList } from "../../../graphql/albumQueries";
 import AlbumCard from '../../atoms/a-album/AlbumCard';
 import { resolveAlbumList } from '../../../utils/resolvers';
 import styles from './AlbumList.module.scss'
+import { AlbumListType } from '../../../@types/ComponentTypes'
+import NothingFound from '../../atoms/a-no-data/NothingFound';
 
 
-const AlbumList = () => {
-  const { loading, data, error } = useQuery(getAlbumList)
+const AlbumList = ({ albumData }: AlbumListType) => {
 
-  if (loading) {
-    return <div>Loadin ...</div>
-  }
   return (
     <section className={styles.list}>
       {
-        resolveAlbumList(data).map((album: any) => {
+        albumData ? resolveAlbumList(albumData).map((album: any) => {
           return (<AlbumCard
             key={album.albumId}
             albumId={album.albumId}
             src={album.photoUrl} title={album.title} />)
-        })
+        }) : <NothingFound />
       }
     </section>
   )

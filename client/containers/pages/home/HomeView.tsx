@@ -6,12 +6,11 @@ import { HomePageType } from '../../../@types/PageTypes'
 import Loading from '../../../components/atoms/a-loading/Loading'
 
 
-const HomeView = ({ musicData, musicIsLoading }: HomePageType) => {
+const HomeView = ({ musicData, musicIsLoading, albumData, albumIsLoading }: HomePageType) => {
   return (
     <main className={styles.home}>
-      <AlbumList />
-      {!musicIsLoading ? <MusicList data={musicData} />
-        : <div><Loading /></div>}
+      {!albumIsLoading ? <AlbumList albumData={albumData} /> : <Loading />}
+      {!musicIsLoading ? <MusicList data={musicData} /> : <Loading />}
     </main>
   )
 }
